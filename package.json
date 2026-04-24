@@ -1,0 +1,63 @@
+{
+  "name": "wormhole-clone",
+  "private": true,
+  "version": "1.0.0",
+  "main": "main.cjs",
+  "type": "module",
+  "scripts": {
+    "start": "npm run electron:dev",
+    "dev": "vite",
+    "build": "vite build",
+    "electron:dev": "cross-env NODE_ENV=development electron .",
+    "electron:build": "npm run build && electron-builder",
+    "dist": "npm run electron:build"
+  },
+  "dependencies": {
+    "address": "^2.0.3",
+    "express": "^4.21.2",
+    "lucide-react": "^1.11.0",
+    "peerjs": "^1.5.5",
+    "qrcode.react": "^4.2.0",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "react-dropzone": "^15.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "cross-env": "^7.0.3",
+    "electron": "^34.3.0",
+    "electron-builder": "^25.1.8",
+    "eslint": "^10.2.1",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.5.0",
+    "vite": "^8.0.10",
+    "wait-on": "^8.0.2"
+  },
+  "build": {
+    "appId": "com.wormhole.clone",
+    "productName": "Wormhole",
+    "win": {
+      "target": "portable",
+      "verifyUpdateCodeSignature": false
+    },
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "main.cjs",
+      "package.json",
+      "node_modules/**/*"
+    ],
+    "protocols": {
+      "name": "wormhole",
+      "schemes": [
+        "wormhole"
+      ]
+    }
+  }
+}
